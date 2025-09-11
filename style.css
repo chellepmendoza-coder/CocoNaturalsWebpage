@@ -41,4 +41,34 @@ blockquote {
   border-left: 4px solid #a86c3a;
   padding-left: 10px;
   margin: 20px 0;
+
+}
+nav {
+  background-color: #f8f8f8;
+  padding: 10px;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
 }
