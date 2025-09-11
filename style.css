@@ -1,3 +1,9 @@
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #666;
+}
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #fffaf4;
@@ -72,3 +78,4 @@ nav ul li a {
     margin: 10px 0;
   }
 }
+
