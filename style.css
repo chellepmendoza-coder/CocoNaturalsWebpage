@@ -134,4 +134,8 @@ h1, h2, h3 {
   font-family: 'Great Vibes', cursive;
   color: #7a4e2d;
 }
-
+.about-logo {
+  max-width: 200px;
+  display: block;
+  margin: 20px auto;
+}
