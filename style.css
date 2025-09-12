@@ -3,7 +3,8 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #fff8f0;
   color: #4b3b2a;
-  line-height: 1.6;
+  line-height: 1.8;
+  font-size: 18px; /* gently enlarged */
   margin: 0;
   padding: 20px;
 }
@@ -16,13 +17,13 @@ header, footer {
 }
 
 header h1 {
-  font-size: 2em;
+  font-size: 2.5em; /* was 2em */
   color: #8b5e3c;
 }
 
 footer {
   margin-top: 40px;
-  font-size: 14px;
+  font-size: 16px;
   color: #666;
 }
 
@@ -48,6 +49,7 @@ nav ul li a {
   text-decoration: none;
   color: #8b5e3c;
   font-weight: bold;
+  font-size: 16px;
 }
 
 nav ul li a:hover {
@@ -152,11 +154,39 @@ h1, h2, h3 {
   color: #7a4e2d;
 }
 
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2.2em;
+}
+
+h3 {
+  font-size: 1.8em;
+}
+/* 🛍️ Product Titles */
+.products h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6em; /* slightly reduced from 1.8em */
+  color: #4a3c2a;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* 🖼️ Enlarged Product Images */
+.product-img {
+  max-width: 280px; /* was 200px */
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 12px;
+}
 /* ✨ Coco Chelle Signature Font */
 .brand-name {
   font-family: 'Great Vibes', cursive;
   font-size: 2.8em;
-  color: #8b5e3c;
+  color: #8b5e3c; /* Optional: change to #cfa75e for gold accent */
   text-align: center;
   margin-bottom: 10px;
   letter-spacing: 1px;
