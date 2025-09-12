@@ -49,18 +49,12 @@
     .btn:hover {
       transform: translateY(-2px);
     }
-    .messenger-btn {
-      background-color: #0084FF;
-    }
-    .messenger-btn:hover {
-      background-color: #006fd1;
-    }
-    .email-btn {
-      background-color: #d4b483;
-    }
-    .email-btn:hover {
-      background-color: #b89465;
-    }
+    .messenger-btn { background-color: #0084FF; }
+    .messenger-btn:hover { background-color: #006fd1; }
+    .email-btn { background-color: #d4b483; }
+    .email-btn:hover { background-color: #b89465; }
+    .gcash-btn { background-color: #0072CE; }
+    .gcash-btn:hover { background-color: #005fa3; }
     a.back-link {
       display: inline-block;
       margin-top: 30px;
@@ -71,16 +65,24 @@
       text-decoration: none;
       transition: background-color 0.3s ease;
     }
-    a.back-link:hover {
-      background-color: #b89465;
-    }
+    a.back-link:hover { background-color: #b89465; }
   </style>
 </head>
 <body>
   <h1>Pay with GCash</h1>
   <p id="amount-text">Scan the QR code below to complete your payment.</p>
-  <img src="images/gcash-qr.jpg" alt="GCash QR Code">
-  <p><strong>GCash Number:</strong> +63 968 441 XXXX</p>
+
+  <!-- QR code for desktop -->
+  <div id="qr-section">
+    <img src="images/gcash-qr.jpg" alt="GCash QR Code">
+    <p><strong>GCash Number:</strong> <span id="gcash-number">0968 441 6038</span></p>
+  </div>
+
+  <!-- Mobile button -->
+  <div id="mobile-section" style="display:none;">
+    <button class="btn gcash-btn" onclick="copyNumberAndOpenGCash()">Copy Number & Open GCash</button>
+  </div>
+
   <p class="note">After payment, please send your proof of payment so we can process your order quickly.</p>
 
   <!-- Proof of Payment Buttons -->
@@ -91,23 +93,36 @@
   <a href="products.html" class="back-link">Back to Products</a>
 
   <script>
-    // Get the ?amount= value from the URL
     const params = new URLSearchParams(window.location.search);
     const amount = params.get('amount');
+    const gcashNumber = "09684416038"; // Your full GCash number
 
     if (amount) {
       document.getElementById('amount-text').innerHTML =
-        `Please send <strong>₱${amount}</strong> via GCash by scanning the QR code below.`;
+        `Please send <strong>₱${amount}</strong> via GCash by scanning the QR code below or using the button below.`;
     }
 
-    // Set Messenger link (replace with your actual FB page username)
-    const messengerUsername = "YOUR_FACEBOOK_PAGE_USERNAME"; 
+    // Show mobile button if on mobile
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      document.getElementById('mobile-section').style.display = 'block';
+    }
+
+    function copyNumberAndOpenGCash() {
+      navigator.clipboard.writeText(gcashNumber).then(() => {
+        alert("GCash number copied! Opening GCash app...");
+        // Try to open GCash app (will only work if installed)
+        window.location.href = "gcash://";
+      });
+    }
+
+    // Messenger link (replace with your FB Page username)
+    const messengerUsername = "YOUR_FACEBOOK_PAGE_USERNAME";
     document.getElementById('messenger-link').href =
       amount
         ? `https://m.me/${messengerUsername}?text=Hello%2C%20I%20have%20sent%20a%20GCash%20payment%20of%20%E2%82%B1${amount}.%20Here%20is%20my%20proof%20of%20payment.`
         : `https://m.me/${messengerUsername}`;
 
-    // Set Email link with your provided address
+    // Email link
     const emailAddress = "cocochellenaturals@gmail.com";
     const emailSubject = "GCash Payment Proof - Coco Chelle Naturals";
     const emailBody = amount 
