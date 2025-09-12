@@ -88,6 +88,15 @@ img {
   margin-top: 15px;
 }
 
+/* ✨ Product Image Styling */
+.product-img {
+  max-width: 200px;
+  height: auto;
+  display: block;
+  margin: 15px auto;
+  border-radius: 12px;
+}
+
 /* 📝 Form */
 form {
   background-color: #fff;
@@ -119,6 +128,30 @@ button:hover {
 }
 
 /* 🔗 Links */
+a {
+  color: #a86c3a;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 💬 Blockquotes */
+blockquote {
+  font-style: italic;
+  color: #5c3b2e;
+  border-left: 4px solid #a86c3a;
+  padding-left: 10px;
+  margin: 20px 0;
+}
+
+/* 💛 Headings */
+h1, h2, h3 {
+  font-family: 'Great Vibes', cursive;
+  color: #7a4e2d;
+}
+
 /* ✨ Coco Chelle Signature Font */
 .brand-name {
   font-family: 'Great Vibes', cursive;
@@ -127,15 +160,4 @@ button:hover {
   text-align: center;
   margin-bottom: 10px;
   letter-spacing: 1px;
-}
-
-/* 💛 Headings with Great Vibes */
-h1, h2, h3 {
-  font-family: 'Great Vibes', cursive;
-  color: #7a4e2d;
-}
-.about-logo {
-  max-width: 200px;
-  display: block;
-  margin: 20px auto;
 }
