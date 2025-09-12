@@ -6,6 +6,39 @@
   <title>Products · Coco Chelle Naturals</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script>
+    let cart = [];
+
+    function addToCart(product, price) {
+      cart.push({ product, price });
+      alert(`${product} added to cart.`);
+      updateCartLink();
+    }
+
+    function updateCartLink() {
+      const cartLink = document.getElementById("cart-link");
+      cartLink.innerText = `View Cart (${cart.length})`;
+    }
+
+    function viewCart() {
+      let cartHTML = "<h2>Your Cart</h2><ul>";
+      let total = 0;
+      cart.forEach(item => {
+        cartHTML += `<li>${item.product} - ₱${item.price}</li>`;
+        total += item.price;
+      });
+      cartHTML += `</ul><p><strong>Total:</strong> ₱${total}</p>`;
+      cartHTML += `
+        <h3>GCash Payment</h3>
+        <p><strong>GCash Number:</strong> 09XX-XXX-XXXX</p>
+        <p><strong>Account Name:</strong> Michelle C.</p>
+        <p>Scan the QR code below to pay:</p>
+        <img src="images/gcash-qr.jpg" alt="GCash QR Code" class="product-img" />
+        <p>After payment, please message us on <a href="https://www.facebook.com/yourpage" target="_blank">Facebook</a> or <a href="https://www.instagram.com/yourpage" target="_blank">Instagram</a> with your order details.</p>
+      `;
+      document.getElementById("cart").innerHTML = cartHTML;
+    }
+  </script>
 </head>
 
 <body>
@@ -15,6 +48,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="products.html">Products</a></li>
       <li><a href="contact.html">Contact</a></li>
+      <li><a href="#" id="cart-link" onclick="viewCart()">View Cart (0)</a></li>
     </ul>
   </nav>
 
@@ -29,37 +63,30 @@
       <div class="products">
         <h3>30 mL Coconut Oil</h3>
         <img src="images/product-30ml.jpg" alt="30 mL Coconut Oil" class="product-img" />
-        <p>Perfect for travel or daily rituals. Nourish your hair and skin with our handcrafted coconut oil.</p>
+        <p>₱120 · Perfect for travel or daily rituals.</p>
+        <button onclick="addToCart('30 mL Coconut Oil', 120)">Add to Cart</button>
 
         <h3>100 mL Coconut Oil</h3>
         <img src="images/coconut-oil-100ml.jpg" alt="100 mL Coconut Oil" class="product-img" />
-        <p>Our full-size bottle for deep nourishment and long-lasting care.</p>
+        <p>₱250 · Deep nourishment and long-lasting care.</p>
+        <button onclick="addToCart('100 mL Coconut Oil', 250)">Add to Cart</button>
 
         <h3>Hair Regrowth Formula</h3>
         <img src="images/30ml_hair_regrowth_formula.jpg" alt="30 mL Hair Regrowth Formula" class="product-img" />
         <img src="images/hair_regrowth_formula.jpg" alt="Hair Regrowth Formula" class="product-img" />
-        <p>Infused with natural ingredients to support hair growth and scalp health.</p>
+        <p>₱180 · Supports hair growth and scalp health.</p>
+        <button onclick="addToCart('Hair Regrowth Formula', 180)">Add to Cart</button>
 
         <h3>Ritual Bundle</h3>
         <img src="images/ritual-bundle.jpg" alt="Ritual Bundle" class="product-img" />
-        <p>Our complete care set—perfect for gifting or starting your own healing ritual.</p>
+        <p>₱500 · Complete care set for your healing ritual.</p>
+        <button onclick="addToCart('Ritual Bundle', 500)">Add to Cart</button>
       </div>
     </section>
 
-    <section>
-  <h2>How to Order</h2>
-  <p>To place an order, please send us a message on <a href="https://www.facebook.com/yourpage" target="_blank">Facebook</a> or <a href="https://www.instagram.com/yourpage" target="_blank">Instagram</a>.</p>
-  <p>Include the product name, quantity, and your delivery details.</p>
-
-  <h3>GCash Payment</h3>
-  <p><strong>GCash Number:</strong> 0968-441-6038</p>
-  <p><strong>Account Name:</strong> Michelle M.</p>
-  <p>Scan the QR code below to pay easily via GCash:</p>
-  <img src="images/gcash-qr.jpg" alt="GCash QR Code" class="product-img" />
-  <p>Once payment is confirmed, we’ll ship your Coco Chelle products with love and care 💛</p>
-
-  <button onclick="alert('Please message us on Facebook or Instagram to order.')">Buy Now</button>
-</section>
+    <section id="cart">
+      <!-- Cart will appear here -->
+    </section>
   </main>
 
   <footer>
@@ -68,4 +95,3 @@
   </footer>
 </body>
 </html>
-
