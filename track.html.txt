@@ -1,0 +1,7 @@
+<h2>Track Your Coco Chelle Order</h2>
+<p>Enter your tracking number below to check delivery status:</p>
+
+<form action="https://www.lbcexpress.com/track" method="GET" target="_blank">
+  <input type="text" name="tracking_number" placeholder="Enter tracking number" required />
+  <button type="submit">Track Now</button>
+</form>
