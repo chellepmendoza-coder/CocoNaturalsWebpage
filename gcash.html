@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pay with GCash · Coco Chelle Naturals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background-color: #fff8f0;
+      color: #4b3b2a;
+      text-align: center;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #8b5e3c;
+    }
+    img {
+      max-width: 300px;
+      margin: 20px auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    p {
+      font-size: 18px;
+    }
+    .note {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #666;
+    }
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 18px;
+      border-radius: 6px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    .messenger-btn {
+      background-color: #0084FF;
+    }
+    .messenger-btn:hover {
+      background-color: #006fd1;
+    }
+    .email-btn {
+      background-color: #d4b483;
+    }
+    .email-btn:hover {
+      background-color: #b89465;
+    }
+    a.back-link {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #d4b483;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    a.back-link:hover {
+      background-color: #b89465;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pay with GCash</h1>
+  <p id="amount-text">Scan the QR code below to complete your payment.</p>
+  <img src="images/gcash-qr.jpg" alt="GCash QR Code">
+  <p><strong>GCash Number:</strong> +63 968 441 XXXX</p>
+  <p class="note">After payment, please send your proof of payment so we can process your order quickly.</p>
+
+  <!-- Proof of Payment Buttons -->
+  <a id="messenger-link" class="btn messenger-btn" target="_blank">Send via Messenger</a>
+  <a id="email-link" class="btn email-btn">Send via Email</a>
+
+  <br>
+  <a href="products.html" class="back-link">Back to Products</a>
+
+  <script>
+    // Get the ?amount= value from the URL
+    const params = new URLSearchParams(window.location.search);
+    const amount = params.get('amount');
+
+    if (amount) {
+      document.getElementById('amount-text').innerHTML =
+        `Please send <strong>₱${amount}</strong> via GCash by scanning the QR code below.`;
+    }
+
+    // Set Messenger link (replace with your actual FB page username)
+    const messengerUsername = "YOUR_FACEBOOK_PAGE_USERNAME"; 
+    document.getElementById('messenger-link').href =
+      amount
+        ? `https://m.me/${messengerUsername}?text=Hello%2C%20I%20have%20sent%20a%20GCash%20payment%20of%20%E2%82%B1${amount}.%20Here%20is%20my%20proof%20of%20payment.`
+        : `https://m.me/${messengerUsername}`;
+
+    // Set Email link with your provided address
+    const emailAddress = "cocochellenaturals@gmail.com";
+    const emailSubject = "GCash Payment Proof - Coco Chelle Naturals";
+    const emailBody = amount 
+      ? `Hello, I have sent a GCash payment of ₱${amount}. Please find my proof of payment attached.` 
+      : `Hello, I have sent a GCash payment. Please find my proof of payment attached.`;
+    document.getElementById('email-link').href =
+      `mailto:${emailAddress}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+  </script>
+</body>
+</html>
