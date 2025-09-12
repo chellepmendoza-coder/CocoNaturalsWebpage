@@ -39,7 +39,7 @@
       z-index: 999;
     }
 
-    #close-cart {
+    #close-cart, #checkout-btn {
       background-color: #8b5e3c;
       color: white;
       border: none;
@@ -47,6 +47,10 @@
       border-radius: 6px;
       cursor: pointer;
       margin-top: 10px;
+    }
+
+    #checkout-btn {
+      margin-left: 10px;
     }
   </style>
 
@@ -74,11 +78,15 @@
       cartHTML += `</ul><p><strong>Total:</strong> ₱${total}</p>`;
       cartHTML += `
         <h3>GCash Payment</h3>
-        <p><strong>GCash Number:</strong> 09XX-XXX-XXXX</p>
+        <p><strong>GCash Number:</strong> 09684416038</p>
         <p><strong>Account Name:</strong> Michelle C.</p>
         <p>Scan the QR code below to pay:</p>
         <img src="images/gcash-qr.jpg" alt="GCash QR Code" class="product-img" />
         <p>After payment, please message us on <a href="https://www.facebook.com/yourpage" target="_blank">Facebook</a> or <a href="https://www.instagram.com/yourpage" target="_blank">Instagram</a> with your order details.</p>
+      `;
+      cartHTML += `
+        <button id="close-cart" onclick="closeCart()">Close</button>
+        <button id="checkout-btn" onclick="checkout()">Checkout</button>
       `;
       document.getElementById("cart-content").innerHTML = cartHTML;
       document.getElementById("cart-modal").style.display = "block";
@@ -88,6 +96,10 @@
     function closeCart() {
       document.getElementById("cart-modal").style.display = "none";
       document.getElementById("cart-overlay").style.display = "none";
+    }
+
+    function checkout() {
+      alert("Please complete payment via GCash and message us on Facebook or Instagram with your order details. Thank you!");
     }
   </script>
 </head>
@@ -112,26 +124,26 @@
     <section>
       <h2>Our Products</h2>
       <div class="products">
-        <h3>30 mL Hair Regrowth Formula</h3>
+        <h3>30 mL Coconut Oil</h3>
         <img src="images/product-30ml.jpg" alt="30 mL Coconut Oil" class="product-img" />
         <p>₱250 · Perfect for travel or daily rituals.</p>
-        <button onclick="addToCart('30 mL Coconut Oil', 120)">Add to Cart</button>
+        <button onclick="addToCart('30 mL Coconut Oil', 250)">Add to Cart</button>
 
-        <h3>100 mL Hair Regrowth Formula</h3>
+        <h3>100 mL Coconut Oil</h3>
         <img src="images/coconut-oil-100ml.jpg" alt="100 mL Coconut Oil" class="product-img" />
         <p>₱600 · Deep nourishment and long-lasting care.</p>
-        <button onclick="addToCart('100 mL Coconut Oil', 250)">Add to Cart</button>
+        <button onclick="addToCart('100 mL Coconut Oil', 600)">Add to Cart</button>
 
         <h3>Hair Regrowth Formula</h3>
         <img src="images/30ml_hair_regrowth_formula.jpg" alt="30 mL Hair Regrowth Formula" class="product-img" />
         <img src="images/hair_regrowth_formula.jpg" alt="Hair Regrowth Formula" class="product-img" />
         <p>₱250 · Supports hair growth and scalp health.</p>
-        <button onclick="addToCart('Hair Regrowth Formula', 180)">Add to Cart</button>
+        <button onclick="addToCart('Hair Regrowth Formula', 250)">Add to Cart</button>
 
         <h3>Ritual Bundle</h3>
         <img src="images/ritual-bundle.jpg" alt="Ritual Bundle" class="product-img" />
         <p>₱250 · Complete care set for your healing ritual.</p>
-        <button onclick="addToCart('Ritual Bundle', 500)">Add to Cart</button>
+        <button onclick="addToCart('Ritual Bundle', 250)">Add to Cart</button>
       </div>
     </section>
   </main>
@@ -139,7 +151,6 @@
   <div id="cart-overlay" onclick="closeCart()"></div>
   <div id="cart-modal">
     <div id="cart-content"></div>
-    <button id="close-cart" onclick="closeCart()">Close</button>
   </div>
 
   <footer>
