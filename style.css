@@ -1,146 +1,17 @@
-footer {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 14px;
-  color: #666;
-}
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fffaf4;
-  color: #3d3d3d;
-  margin: 0;
-  padding: 0;
-}
-
-header, footer {
-  background-color: #f5e6d3;
-  text-align: center;
-  padding: 20px;
-}
-
-h1, h2 {
-  color: #7a4e2d;
-}
-
-main {
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
-}
-
-section {
-  margin-bottom: 30px;
-}
-
-a {
-  color: #a86c3a;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-blockquote {
-  font-style: italic;
-  color: #5c3b2e;
-  border-left: 4px solid #a86c3a;
-  padding-left: 10px;
-  margin: 20px 0;
-
-}
-nav {
-  background-color: #f8f8f8;
-  padding: 10px;
-  text-align: center;
-}
-
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 15px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-}
-
-@media (max-width: 600px) {
-  nav ul li {
-    display: block;
-    margin: 10px 0;
-  }
-}
-form {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+/* 🌿 Base Styles */
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #fff8f0;
   color: #4b3b2a;
   line-height: 1.6;
+  margin: 0;
   padding: 20px;
 }
 
-header {
+/* 🌸 Header & Footer */
+header, footer {
+  background-color: #f5e6d3;
   text-align: center;
-  margin-bottom: 30px;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 15px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #8b5e3c;
-  font-weight: bold;
-}
-
-img {
-  max-width: 300px;
-  border-radius: 8px;
-  margin: 20px 0;
-}
-
-section {
-  margin-bottom: 40px;
-}
-
-form {
-  background-color: #fff;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-body {
-  background-color: #fff8f0;
-  font-family: 'Segoe UI', sans-serif;
-  color: #4b3b2a;
   padding: 20px;
 }
 
@@ -149,10 +20,23 @@ header h1 {
   color: #8b5e3c;
 }
 
+footer {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* 🧭 Navigation */
+nav {
+  background-color: #f8f8f8;
+  padding: 10px;
+  text-align: center;
+}
+
 nav ul {
   list-style: none;
   padding: 0;
-  text-align: center;
+  margin: 0;
 }
 
 nav ul li {
@@ -164,6 +48,25 @@ nav ul li a {
   text-decoration: none;
   color: #8b5e3c;
   font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* 📱 Responsive Navigation */
+@media (max-width: 600px) {
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
+/* 🧾 Main Content */
+main {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
 }
 
 section {
@@ -174,18 +77,50 @@ section {
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
+/* 🖼️ Images */
 img {
   max-width: 100%;
   border-radius: 12px;
   margin-top: 15px;
 }
 
+/* 📝 Form */
+form {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
 input, textarea {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
-  border-radius: 4px;
   border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
+/* 🔗 Links */
+a {
+  color: #a86c3a;
+  text-decoration: none;
+}
 
+a:hover {
+  text-decoration: underline;
+}
+
+/* 💬 Blockquotes */
+blockquote {
+  font-style: italic;
+  color: #5c3b2e;
+  border-left: 4px solid #a86c3a;
+  padding-left: 10px;
+  margin: 20px 0;
+}
+
+/* 🧡 Headings */
+h1, h2 {
+  color: #7a4e2d;
+}
