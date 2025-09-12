@@ -1,7 +1,65 @@
-<h2>Track Your Coco Chelle Order</h2>
-<p>Enter your tracking number below to check delivery status:</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track My Order · Coco Chelle Naturals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #fff8f0;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    .brand-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      color: #8b5e3c;
+      margin-bottom: 10px;
+    }
+    .message {
+      font-size: 18px;
+      color: #4a3c2a;
+      margin-top: 20px;
+    }
+    input {
+      padding: 10px;
+      width: 80%;
+      max-width: 300px;
+      margin-top: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #8b5e3c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="brand-name">Coco Chelle</div>
+  <p class="message">
+    Track your healing ritual 🌿<br />
+    Enter your J&T tracking number below to check delivery status.
+  </p>
 
-<form action="https://www.lbcexpress.com/track" method="GET" target="_blank">
-  <input type="text" name="tracking_number" placeholder="Enter tracking number" required />
-  <button type="submit">Track Now</button>
-</form>
+  <form action="https://www.jtexpress.ph/index/query/gzquery.html" method="GET" target="_blank">
+    <input type="text" name="billcode" placeholder="Enter tracking number" required />
+    <br />
+    <button type="submit">Track Now</button>
+  </form>
+
+  <p class="message">
+    If you need help, feel free to message us on  
+    <a href="https://www.facebook.com/yourpage" target="_blank">Facebook</a> or  
+    <a href="https://www.instagram.com/yourpage" target="_blank">Instagram</a>.
+  </p>
+</body>
+</html>
