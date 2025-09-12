@@ -94,12 +94,14 @@
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const amount = params.get('amount');
+    const total = parseFloat(params.get('amount')) || 0;
+    const deliveryFee = 80;
+    const subtotal = total > 0 ? total - deliveryFee : 0;
     const gcashNumber = "09684416038"; // Your full GCash number
 
-    if (amount) {
+    if (total > 0) {
       document.getElementById('amount-text').innerHTML =
-        `Please send <strong>₱${amount}</strong> via GCash by scanning the QR code below or using the button below.`;
+        `Subtotal: ₱${subtotal}<br>Delivery Fee: ₱${deliveryFee} <br><strong>Total to Pay:</strong> ₱${total}`;
     }
 
     // Show mobile button if on mobile
@@ -110,7 +112,6 @@
     function copyNumberAndOpenGCash() {
       navigator.clipboard.writeText(gcashNumber).then(() => {
         alert("GCash number copied! Opening GCash app...");
-        // Try to open GCash app (will only work if installed)
         window.location.href = "gcash://";
       });
     }
@@ -118,15 +119,15 @@
     // Messenger link (replace with your FB Page username)
     const messengerUsername = "YOUR_FACEBOOK_PAGE_USERNAME";
     document.getElementById('messenger-link').href =
-      amount
-        ? `https://m.me/${messengerUsername}?text=Hello%2C%20I%20have%20sent%20a%20GCash%20payment%20of%20%E2%82%B1${amount}.%20Here%20is%20my%20proof%20of%20payment.`
+      total > 0
+        ? `https://m.me/${messengerUsername}?text=Hello%2C%20I%20have%20sent%20a%20GCash%20payment%20of%20%E2%82%B1${total}.%20Here%20is%20my%20proof%20of%20payment.`
         : `https://m.me/${messengerUsername}`;
 
     // Email link
     const emailAddress = "cocochellenaturals@gmail.com";
     const emailSubject = "GCash Payment Proof - Coco Chelle Naturals";
-    const emailBody = amount 
-      ? `Hello, I have sent a GCash payment of ₱${amount}. Please find my proof of payment attached.` 
+    const emailBody = total > 0
+      ? `Hello, I have sent a GCash payment of ₱${total}. Please find my proof of payment attached.`
       : `Hello, I have sent a GCash payment. Please find my proof of payment attached.`;
     document.getElementById('email-link').href =
       `mailto:${emailAddress}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;

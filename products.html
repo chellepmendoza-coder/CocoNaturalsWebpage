@@ -154,7 +154,10 @@
       if (cart.length === 0) {
         content.innerHTML = '<h2>Your Cart</h2><p>Your cart is empty.</p><button class="close-btn" onclick="closeCart()">Close</button>';
       } else {
-        let total = cart.reduce((sum, item) => sum + item.price, 0);
+        let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+        let deliveryFee = 80; // Flat delivery fee
+        let total = subtotal + deliveryFee;
+
         let itemsHTML = '<h2>Your Cart</h2>';
         cart.forEach((item, index) => {
           itemsHTML += `
@@ -164,6 +167,9 @@
             </div>
           `;
         });
+
+        itemsHTML += `<p><strong>Subtotal:</strong> ₱${subtotal}</p>`;
+        itemsHTML += `<p><strong>Delivery Fee:</strong> ₱${deliveryFee} <br><small>Courier will collect your package from our home and deliver straight to you.</small></p>`;
         itemsHTML += `<p><strong>Total:</strong> ₱${total}</p>`;
         itemsHTML += `
           <button class="gcash-btn" onclick="payWithGCash(${total})">Pay with GCash</button>

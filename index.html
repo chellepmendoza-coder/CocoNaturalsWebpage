@@ -8,78 +8,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    main {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      line-height: 1.6;
-    }
-    #cart-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 999;
-    }
-    #cart-modal {
-      display: none;
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 400px;
-      width: 90%;
-      z-index: 1000;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      line-height: 1.6;
-    }
-    #cart-content h2 {
-      margin-top: 0;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    .remove-btn {
-      background: none;
-      border: none;
-      color: #a00;
-      cursor: pointer;
-      font-size: 0.9em;
-    }
-    .close-btn {
-      display: block;
-      margin-top: 15px;
-      background: #333;
-      color: #fff;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .gcash-btn {
-      background-color: #0072CE;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      padding: 10px 18px;
-      cursor: pointer;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 16px;
-      margin-top: 10px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-    .gcash-btn:hover {
-      background-color: #005fa3;
-      transform: translateY(-2px);
-    }
+    main { font-family: 'Cormorant Garamond', serif; font-size: 18px; line-height: 1.6; }
+    #cart-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; }
+    #cart-modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; border-radius: 8px; max-width: 400px; width: 90%; z-index: 1000; font-family: 'Cormorant Garamond', serif; font-size: 18px; line-height: 1.6; }
+    #cart-content h2 { margin-top: 0; }
+    .cart-item { display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .remove-btn { background: none; border: none; color: #a00; cursor: pointer; font-size: 0.9em; }
+    .close-btn { display: block; margin-top: 15px; background: #333; color: #fff; padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; }
+    .gcash-btn { background-color: #0072CE; color: #fff; border: none; border-radius: 6px; padding: 10px 18px; cursor: pointer; font-family: 'Cormorant Garamond', serif; font-size: 16px; margin-top: 10px; transition: background-color 0.3s ease, transform 0.2s ease; }
+    .gcash-btn:hover { background-color: #005fa3; transform: translateY(-2px); }
   </style>
 </head>
-
 <body>
   <nav>
     <ul>
@@ -105,9 +44,7 @@
   </main>
 
   <div id="cart-overlay" onclick="closeCart()"></div>
-  <div id="cart-modal">
-    <div id="cart-content"></div>
-  </div>
+  <div id="cart-modal"><div id="cart-content"></div></div>
 
   <footer>
     <p>Nourish · Strengthen · Grow Naturally</p>
@@ -133,21 +70,19 @@
       if (cart.length === 0) {
         content.innerHTML = '<h2>Your Cart</h2><p>Your cart is empty.</p><button class="close-btn" onclick="closeCart()">Close</button>';
       } else {
-        let total = cart.reduce((sum, item) => sum + item.price, 0);
+        let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+        let deliveryFee = 80;
+        let total = subtotal + deliveryFee;
+
         let itemsHTML = '<h2>Your Cart</h2>';
         cart.forEach((item, index) => {
-          itemsHTML += `
-            <div class="cart-item">
-              <span>${item.name} - ₱${item.price}</span>
-              <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
-            </div>
-          `;
+          itemsHTML += `<div class="cart-item"><span>${item.name} - ₱${item.price}</span><button class="remove-btn" onclick="removeFromCart(${index})">Remove</button></div>`;
         });
+
+        itemsHTML += `<p><strong>Subtotal:</strong> ₱${subtotal}</p>`;
+        itemsHTML += `<p><strong>Delivery Fee:</strong> ₱${deliveryFee} <br><small>Courier will collect your package from our home and deliver straight to you.</small></p>`;
         itemsHTML += `<p><strong>Total:</strong> ₱${total}</p>`;
-        itemsHTML += `
-          <button class="gcash-btn" onclick="payWithGCash(${total})">Pay with GCash</button>
-          <button class="close-btn" onclick="closeCart()">Close</button>
-        `;
+        itemsHTML += `<button class="gcash-btn" onclick="payWithGCash(${total})">Pay with GCash</button><button class="close-btn" onclick="closeCart()">Close</button>`;
         content.innerHTML = itemsHTML;
       }
 
