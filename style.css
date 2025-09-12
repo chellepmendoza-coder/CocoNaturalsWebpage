@@ -105,37 +105,17 @@ input, textarea {
   border-radius: 4px;
 }
 
+button {
+  background-color: #8b5e3c;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #a86c3a;
+}
+
 /* 🔗 Links */
-a {
-  color: #a86c3a;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* 💬 Blockquotes */
-blockquote {
-  font-style: italic;
-  color: #5c3b2e;
-  border-left: 4px solid #a86c3a;
-  padding-left: 10px;
-  margin: 20px 0;
-}
-
-/* 🧡 Headings */
-h1, h2 {
-  font-family: 'Great Vibes', cursive;
-  color: #7a4e2d;
-}
-
-/* ✨ Coco Chelle Signature Font */
-.brand-name {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.8em;
-  color: #8b5e3c;
-  text-align: center;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-}
