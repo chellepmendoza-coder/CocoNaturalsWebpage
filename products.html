@@ -130,6 +130,9 @@
       <p class="form-intro">Fill in your details below and we’ll prepare your order with care.</p>
 
       <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <!-- Redirect to Thank You page after submission -->
+        <input type="hidden" name="_redirect" value="https://coco-naturals-webpage.vercel.app/thankyou.html">
+
         <label for="name">Full Name</label>
         <input type="text" id="name" name="name" required>
 
@@ -199,7 +202,4 @@
         });
 
         itemsHTML += `<p><strong>Subtotal:</strong> ₱${subtotal}</p>`;
-        itemsHTML += `<p><strong>Delivery Fee:</strong> ₱${deliveryFee} <br><small>Courier will collect your package from our home and deliver straight to you.</small></p>`;
-        itemsHTML += `<p><strong>Total:</strong> ₱${total}</p>`;
-        itemsHTML += `
-          <button class="gcash-btn" onclick="payWithGCash(${total})">
+        itemsHTML += `<p><strong>Delivery Fee:</strong> ₱${deliveryFee} <br><small>Courier will collect your package from our home and deliver straight to you.</small></
