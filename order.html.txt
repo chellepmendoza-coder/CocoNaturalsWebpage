@@ -1,0 +1,28 @@
+<section class="order-form">
+  <h2>Bring Coco Chelle Home</h2>
+  <p class="form-intro">Fill in your details below and we’ll prepare your order with care.</p>
+
+  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="product">Product & Quantity</label>
+    <input type="text" id="product" name="product" placeholder="e.g., 2x Coco Glow Oil" required>
+
+    <label for="address">Delivery Address</label>
+    <textarea id="address" name="address" rows="3" required></textarea>
+
+    <label for="payment">Preferred Payment Method</label>
+    <select id="payment" name="payment" required>
+      <option value="">Select</option>
+      <option value="GCash">GCash</option>
+      <option value="Bank Transfer">Bank Transfer</option>
+      <option value="COD">Cash on Delivery</option>
+    </select>
+
+    <label for="notes">Special Requests (optional)</label>
+    <textarea id="notes" name="notes" rows="2"></textarea>
+
+    <button type="submit">Submit Order</button>
+  </form>
+</section>
