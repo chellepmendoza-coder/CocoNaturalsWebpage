@@ -8,13 +8,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Match About/Home typography */
     main {
       font-family: 'Cormorant Garamond', serif;
       font-size: 18px;
       line-height: 1.6;
     }
-    /* Cart modal styling */
     #cart-overlay {
       display: none;
       position: fixed;
@@ -81,7 +79,6 @@
     }
   </style>
 </head>
-
 <body>
   <nav>
     <ul>
@@ -122,15 +119,25 @@
       <img src="images/ritual-bundle.jpg" alt="Ritual Bundle" class="product-img" />
       <p>₱250 · Complete care set for your healing ritual.</p>
       <button onclick="addToCart('Ritual Bundle', 250)">Add to Cart</button>
+
+      <h2>Gentle Strength Formula – Unscented</h2>
+<img src="images/unscented-bottle.jpg" alt="Unscented Gentle Strength Formula" class="product-img" />
+<p>₱750 · Calm, nourish, and grow naturally with chamomile EO.</p>
+<p><a href="unscented.html">Learn more</a></p>
+<button onclick="addToCart('Gentle Strength – Unscented', 750)">Add to Cart</button>
+
+<h2>Gentle Strength Formula – For Men</h2>
+<img src="images/for-men-bottle.jpg" alt="For Men Gentle Strength Formula" class="product-img" />
+<p>₱750 · Grounded strength with rosemary and cedarwood.</p>
+<p><a href="for-men.html">Learn more</a></p>
+<button onclick="addToCart('Gentle Strength – For Men', 750)">Add to Cart</button>
     </section>
 
-    <!-- 🌿 Order Form -->
     <section class="order-form">
       <h2>Bring Coco Chelle Home</h2>
       <p class="form-intro">Fill in your details below and we’ll prepare your order with care.</p>
 
       <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <!-- Redirect to Thank You page after submission -->
         <input type="hidden" name="_redirect" value="https://coco-naturals-webpage.vercel.app/thankyou.html">
 
         <label for="name">Full Name</label>
@@ -159,9 +166,7 @@
   </main>
 
   <div id="cart-overlay" onclick="closeCart()"></div>
-  <div id="cart-modal">
-    <div id="cart-content"></div>
-  </div>
+  <div id="cart-modal"><div id="cart-content"></div></div>
 
   <footer>
     <p>Nourish · Strengthen · Grow Naturally</p>
@@ -172,34 +177,16 @@
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     updateCartLink();
 
-    window.addToCart = function(productName, price) {
+    function addToCart(productName, price) {
       cart.push({ name: productName, price: price });
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCartLink();
       viewCart();
-    };
+    }
 
-    window.viewCart = function() {
+    function viewCart() {
       const overlay = document.getElementById('cart-overlay');
       const modal = document.getElementById('cart-modal');
       const content = document.getElementById('cart-content');
 
       if (cart.length === 0) {
-        content.innerHTML = '<h2>Your Cart</h2><p>Your cart is empty.</p><button class="close-btn" onclick="closeCart()">Close</button>';
-      } else {
-        let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-        let deliveryFee = 80; // Flat delivery fee
-        let total = subtotal + deliveryFee;
-
-        let itemsHTML = '<h2>Your Cart</h2>';
-        cart.forEach((item, index) => {
-          itemsHTML += `
-            <div class="cart-item">
-              <span>${item.name} - ₱${item.price}</span>
-              <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
-            </div>
-          `;
-        });
-
-        itemsHTML += `<p><strong>Subtotal:</strong> ₱${subtotal}</p>`;
-        itemsHTML += `<p><strong>Delivery Fee:</strong> ₱${deliveryFee} <br><small>Courier will collect your package from our home and deliver straight to you.</small></
